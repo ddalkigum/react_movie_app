@@ -1,25 +1,18 @@
 import React from "react";
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Navigation from "./components/Navigation";
+import "./App.css";
 
-class App extends React.Component {
-  state = {
-    ChampName: "Yasuo",
-    Attack: 58,
-  };
-
-  add = () => {
-    this.setState((current) => ({ Attack: current.Attack + 1 }));
-  };
-  minus = () => {
-    this.setState({ Attack: this.state.Attack - 1 });
-  };
-  render() {
-    return (
-      <div>
-        <h1>Damage: {this.state.Attack}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <HashRouter>
+      <Navigation />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+    </HashRouter>
+  );
 }
+
 export default App;
